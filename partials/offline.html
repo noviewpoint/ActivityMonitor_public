@@ -1,0 +1,58 @@
+<h1>offline</h1>
+
+<p>prikaz koliko kB podatkov je uporabnik pošiljal v podatkovno bazo MongoDB v nekem časovnem obdobju</p>
+
+
+<div class="form-group">
+	<label>Select users</label>
+	<ui-select on-select="OfflineCtrl.onSelected($item);" on-remove="OfflineCtrl.onRemove($item);" multiple sortable="true" ng-model="OfflineCtrl.selectedPersons" theme="bootstrap">
+
+		<ui-select-match placeholder="Select or search a person in the list..."><span id="{{$item.$$hashKey}}">{{$item.username}}</span></ui-select-match>
+
+		<ui-select-choices repeat="item in OfflineCtrl.people | filter: $select.search">
+		  <div ng-bind-html="item.username | highlight: $select.search"></div>
+		  <!--<small ng-bind-html="item.email | highlight: $select.search"></small>-->
+		</ui-select-choices>
+
+	</ui-select>
+</div>
+
+<div class="form-group">
+	<label for="startTime">Start time:</label>
+	<input class="form-control" ng-change="OfflineCtrl.selectDate()" ng-model="OfflineCtrl.startTime" locale="sl" format="LL LTS" today="true" ng-model-options="{ updateOn: 'blur' }" placeholder="Select start time..." moment-picker="OfflineCtrl.startTime" id="startTime">
+</div>
+
+<div class="form-group">
+	<label for="endTime">End time:</label>
+	<input class="form-control" ng-change="OfflineCtrl.selectDate()" ng-model="OfflineCtrl.endTime" locale="sl" format="LL LTS" today="true" ng-model-options="{ updateOn: 'blur' }" placeholder="Select start time..." moment-picker="OfflineCtrl.endTime" id="endTime">
+</div>
+
+{{OfflineCtrl.info}}
+<!--{{OfflineCtrl.keyboardData}}
+{{OfflineCtrl.noldusFaceReaderData}}
+{{OfflineCtrl.tobiiEyeTrackerData}}
+{{OfflineCtrl.androidWearM360Data}}-->
+
+<!--
+<canvas id="line" class="chart chart-line" chart-data="OfflineCtrl.data" chart-labels="OfflineCtrl.labels" chart-series="OfflineCtrl.series" chart-options="OfflineCtrl.options" chart-dataset-override="OfflineCtrl.datasetOverride" chart-click="OfflineCtrl.onClick"></canvas>
+-->
+
+<!--
+<div id="graphdiv"></div>
+<script type="text/javascript">
+  g = new Dygraph(
+
+    // containing div
+    document.getElementById("graphdiv"),
+
+    // CSV or path to a CSV file.
+    "Date,Temperature\n" +
+    "2008-05-07,75\n" +
+    "2008-05-08,70\n" +
+    "2008-05-09,80\n"
+
+  );
+</script>
+-->
+
+<div id="visualization"></div>

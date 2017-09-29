@@ -1,0 +1,14 @@
+{
+  "name": "activity-monitor-documentation",
+  "version": "0.0.1",
+  "description": "Basic code documentation for the application.",
+  "author": {
+    "name": "David Brvar",
+    "email": "db9949@student.uni-lj.si"
+  },
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "chart.js": "^2.4.0",
+    "ui-select": "^0.20.0"
+  }
+}

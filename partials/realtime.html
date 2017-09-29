@@ -1,0 +1,34 @@
+<h1>realtime</h1>
+
+<p>prikaz koliko kB podatkov uporabnik pošilja v podatkovno bazo MongoDB</p>
+
+<!--<p>Selected person's object: {{RealtimeCtrl.selectedPersons}}</p>
+
+<p>Persons: {{RealtimeCtrl.people}}</p>-->
+
+<div class="form-group">
+	<label>Select users</label>
+	<ui-select on-select="RealtimeCtrl.onSelected($item);" on-remove="RealtimeCtrl.onRemove($item);" multiple sortable="true" ng-model="RealtimeCtrl.selectedPersons" theme="bootstrap">
+
+		<ui-select-match placeholder="Select or search a person in the list..."><span id="{{$item.$$hashKey}}">{{$item.username}}</span></ui-select-match>
+
+		<ui-select-choices repeat="item in RealtimeCtrl.people | filter: $select.search">
+		  <div ng-bind-html="item.username | highlight: $select.search"></div>
+		  <!--<small ng-bind-html="item.email | highlight: $select.search"></small>-->
+		</ui-select-choices>
+
+	</ui-select>
+</div>
+
+
+<div id="graf">
+	<canvas id="chart" width="400" height="250"></canvas>
+</div>
+
+
+<!--
+
+<ui-select multiple sortable="true" ng-model="ctrl.multipleDemo.selectedPeople" theme="select2" class="form-control" title="Choose a person">
+<ui-select-match placeholder="Select or search a person in the list...">{{$item.name}}</ui-select-match>
+
+-->
